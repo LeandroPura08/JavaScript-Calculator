@@ -7,10 +7,15 @@
 body{
   background: #71a7b1;
   min-width: 350px;
+  margin-bottom: 100px;
 }
 .case{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 90%;
-  max-width: 470px;
+  max-width: 310px;
   color: #fff;
   margin: 100px auto 0;
   border-radius: 20px;
@@ -20,23 +25,42 @@ body{
   background: rgba(128, 128, 128, 0.671);
 }
 .screen{
+  padding: 0 10px;
+  display: flex;
+  align-items:center;
+  justify-content:end;
   height: 80px;
-  width: 100%;
+  width: 90%;
   background: rgb(128, 128, 128);
+  overflow-x: auto;
 }
 .keys{
-  display: grid;
-  grid-template-columns:60px 60px 60px 60px;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 10px;
   margin-bottom: 10px;
-  row-gap: 5px;
-  column-gap: 5px;
+  row-gap: 7px;
+  column-gap: 7px;
   justify-content: center;
-  align-items: center;
+  align-content: center;
 }
 .button{
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 60px;
+  width: 60px;
   background-color: white;
+  border-radius: 3px;
+  color: black;
+  cursor: pointer;
+}
+
+.button:hover{
+  background-color: gray;
+  color: white;
+}
+.backspace{
+  width: 40%;
 }
