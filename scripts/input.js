@@ -11,14 +11,12 @@ document.querySelectorAll('.num').forEach((num)=>{
 //Delete last number button
 document.querySelector('.delete').addEventListener('click',()=>{
   screen  = screen.toString().slice(0,-1);
-  console.log('tite');
   document.querySelector('.screen').innerHTML = screen;
 })
 
 //Delete last number button
 document.querySelector('.clear').addEventListener('click',()=>{
   screen  = '';
-  console.log('tite');
   document.querySelector('.screen').innerHTML = screen;
 })
 
@@ -28,13 +26,11 @@ document.querySelector('.clear').addEventListener('click',()=>{
 //Negative or Possitive Button
 document.querySelector('.intiger').addEventListener('click',()=>{
   if((Number(screen)) > 0){
-    screen = Number(screen)*-1;
+    screen = (Number(screen)*-1).toString();
     document.querySelector('.screen').innerHTML = screen;
-    console.log(Number(screen));
   }else if((Number(screen)) < 0){
-    screen = Number(screen)*-1;
+    screen = (Number(screen)*-1).toString();
     document.querySelector('.screen').innerHTML = screen;
-    console.log(Number(screen));
   }
 })
 
@@ -44,21 +40,34 @@ let opperator ='';
 
 document.querySelectorAll('.opperators').forEach(opperator=>{
   opperator.addEventListener('click',()=>{
+    if(screen.endsWith('*') || screen.endsWith('/') || screen.endsWith('+') || screen.endsWith('-')) {
+      screen  = screen.toString().slice(0,-1);
       screen = screen + opperator.innerHTML;
       document.querySelector('.screen').innerHTML = screen;
-    
+    }else{
+      screen = screen + opperator.innerHTML;
+      document.querySelector('.screen').innerHTML = screen;
+    }
+    console.log(typeof(screen));
   })
 })
 
 document.getElementById("equal").addEventListener('click',()=>{
-  screen = eval(screen);
-  document.querySelector('.screen').innerHTML = screen;
+    screen = eval(screen).toString();
+    document.querySelector('.screen').innerHTML = screen; 
 })
 
 
 document.getElementById("perCent").addEventListener('click',()=>{
-  const toPercent = (screen.slice(screen.indexOf('*') + 1))/100;
-  screen  = screen.toString().slice(0,screen.indexOf('*')) * toPercent;
+  const toPercent = ((screen.slice(screen.indexOf('*')-2))/100) || ((screen.slice(screen.indexOf('/')-2))/100) || ((screen.slice(screen.indexOf('-') -2))/100) || ((screen.slice(screen.indexOf('+') -2))/100);
+
+  screen = screen.slice(0,(screen.indexOf('*')-1)-1) + toPercent;
+
   document.querySelector('.screen').innerHTML = screen;
+  console.log(screen);
+  console.log(toPercent.toFixed(2));
 })
+
+//screen  = screen.toString().slice(0,screen.indexOf('*')) * toPercent;
+//document.querySelector('.screen').innerHTML = screen;
 
