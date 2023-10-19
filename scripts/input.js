@@ -36,7 +36,7 @@ document.querySelector('.intiger').addEventListener('click',()=>{
 
 
 
-let opperator ='';
+let opps ='';
 
 document.querySelectorAll('.opperators').forEach(opperator=>{
   opperator.addEventListener('click',()=>{
@@ -48,9 +48,7 @@ document.querySelectorAll('.opperators').forEach(opperator=>{
       screen = screen + opperator.innerHTML;
       document.querySelector('.screen').innerHTML = screen;
     }
-    console.log(typeof(screen));
-    opperator = opperator.innerHTML;
-    console.log(opperator);
+    opps = opperator.innerHTML;
   })
 })
 
@@ -61,31 +59,20 @@ document.getElementById("equal").addEventListener('click',()=>{
 
 
 document.getElementById("perCent").addEventListener('click',()=>{
-  //const toPercent = ((screen.slice(screen.lastIndexOf('*')+1))/100) || ((screen.slice(screen.lastIndexOf('/')+1))/100) || ((screen.slice(screen.lastIndexOf('-') +1))/100) || ((screen.slice(screen.lastIndexOf('+') +1))/100);
-  
-  if(opperator == '*'){
-    const toPercent = (screen.slice(screen.lastIndexOf('*')+1))/100;
+  let toPercent = '';
+  if(opps === '*'){
+    toPercent = (screen.slice(screen.lastIndexOf('*')+1))/100;
     screen = screen.slice(0,(screen.lastIndexOf('*')+1)) + toPercent.toString();
     document.querySelector('.screen').innerHTML = screen;
-  }else if(opperator == '/'){
+  }else if(opps ==='/'){
     toPercent = (screen.slice(screen.lastIndexOf('/')+1))/100;
-    screen = screen.slice(0,(screen.lastIndexOf("*")+1)) + toPercent.toString();
-  }else if(opperator == '-'){
+    screen = screen.slice(0,(screen.lastIndexOf("/")+1)) + toPercent.toString();
+  }else if(opps === '-'){
     toPercent = (screen.slice(screen.lastIndexOf('-') +1))/100;
     screen = screen.slice(0,(screen.lastIndexOf('-')+1)) + toPercent.toString();
-  }else if(opperator == '+' ){
+  }else if(opps === '+' ){
     toPercent = (screen.slice(screen.lastIndexOf('+') +1))/100;
     screen = screen.slice(0,(screen.lastIndexOf('+')+1)) + toPercent.toString();
   }
   document.querySelector('.screen').innerHTML = screen;
-  console.log(screen);
-
-  console.log(toPercent.toFixed(2));
-
 })
-
-//screen  = screen.toString().slice(0,screen.indexOf('*')) * toPercent;
-//document.querySelector('.screen').innerHTML = screen;
-
-//screen.slice(screen.lastIndexOf('*')-1) + toPercent.toString();
-
